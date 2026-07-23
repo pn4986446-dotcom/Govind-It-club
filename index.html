@@ -1,477 +1,1015 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Discover the best AI tools for writing, coding, design, research, and productivity.">
+<meta name="theme-color" content="#2563eb"><title>AI Tool Directory | Discover Powerful AI Tools</title><style>
+/* ==============================
+   RESET & VARIABLES
+============================== */
 
-<title>AI Tool Directory</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #7c3aed;
+    --background: #f5f7fb;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --header-text: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    --radius: 18px;
+}
+
+body.dark {
+    --background: #0f172a;
+    --card: #1e293b;
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+    --border: #334155;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 6%;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition: 0.3s ease;
+}
+
+body.dark nav {
+    background: rgba(15, 23, 42, 0.92);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    border: none;
+    background: var(--primary);
+    color: white;
+
+    padding: 10px 16px;
+    border-radius: 10px;
+
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.theme-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   HERO
+============================== */
+
+header {
+    position: relative;
+    overflow: hidden;
+
+    text-align: center;
+    color: var(--header-text);
+
+    padding: 90px 20px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+}
+
+header::before {
+    content: "";
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    top: -120px;
+    left: -100px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    right: -120px;
+    bottom: -180px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: auto;
+}
+
+header h1 {
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+header p {
+    max-width: 700px;
+    margin: auto;
+
+    font-size: 1.1rem;
+    line-height: 1.7;
+
+    opacity: 0.95;
+}
+
+/* ==============================
+   MAIN CONTAINER
+============================== */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+/* ==============================
+   SEARCH
+============================== */
+
+.search-box {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+
+    padding: 16px 20px;
+    padding-left: 50px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    outline: none;
+
+    background: var(--card);
+    color: var(--text);
+
+    font-size: 16px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.search-box input::placeholder {
+    color: var(--muted);
+}
+
+.search-box input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.12),
+        var(--shadow);
+}
+
+/* ==============================
+   FILTERS
+============================== */
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    border: 1px solid var(--border);
+
+    background: var(--card);
+    color: var(--text);
+
+    padding: 9px 17px;
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* ==============================
+   TOOL GRID
+============================== */
+
+.tools-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+
+    gap: 25px;
+}
+
+/* ==============================
+   TOOL CARD
+============================== */
+
+.tool-card {
+    display: flex;
+    flex-direction: column;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 26px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.12);
+
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.tool-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    font-size: 24px;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.tool-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.tool-card p {
+    flex-grow: 1;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+}
+
+.tool-card a {
+    align-self: flex-start;
+
+    text-decoration: none;
+
+    color: white;
+    background: var(--primary);
+
+    padding: 10px 18px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.tool-card a:hover {
+    background: var(--primary-dark);
+    transform: translateX(3px);
+}
+
+/* ==============================
+   NO RESULTS
+============================== */
+
+.no-results {
+    display: none;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    color: var(--muted);
+}
+
+.no-results .emoji {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    background: #111827;
+    color: white;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    margin-top: 40px;
+}
+
+footer p {
+    margin-bottom: 8px;
+}
+
+footer .footer-muted {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 12px 15px;
     }
 
-    :root {
-        --primary: #2563eb;
-        --secondary: #7c3aed;
-        --background: #f5f7fb;
-        --card: #ffffff;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --border: #e5e7eb;
+    .logo {
+        font-size: 1.05rem;
     }
 
-    body.dark {
-        --background: #111827;
-        --card: #1f2937;
-        --text: #f9fafb;
-        --muted: #d1d5db;
-        --border: #374151;
+    .theme-btn {
+        padding: 9px 12px;
     }
 
-    body {
-        background: var(--background);
-        color: var(--text);
-        transition: background 0.3s, color 0.3s;
-    }
-
-    /* HEADER */
     header {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        text-align: center;
         padding: 70px 20px;
     }
 
     header h1 {
-        font-size: clamp(2.2rem, 6vw, 4rem);
-        margin-bottom: 15px;
+        font-size: 2.5rem;
     }
 
     header p {
-        font-size: 1.1rem;
-        max-width: 700px;
-        margin: auto;
-        line-height: 1.6;
+        font-size: 1rem;
     }
 
-    /* NAVBAR */
-    nav {
-        background: var(--card);
-        border-bottom: 1px solid var(--border);
-        padding: 15px 20px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: var(--primary);
-    }
-
-    .theme-btn {
-        border: none;
-        background: var(--primary);
-        color: white;
-        padding: 9px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-
-    /* CONTAINER */
     .container {
-        max-width: 1200px;
-        margin: auto;
-        padding: 45px 20px;
+        padding: 45px 15px;
     }
 
-    .section-title {
-        text-align: center;
-        margin-bottom: 25px;
-        font-size: 2rem;
-    }
-
-    /* SEARCH */
-    .search-box {
-        max-width: 650px;
-        margin: 0 auto 30px;
-    }
-
-    .search-box input {
-        width: 100%;
-        padding: 15px 20px;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        outline: none;
-        background: var(--card);
-        color: var(--text);
-        font-size: 16px;
-    }
-
-    .search-box input:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-    }
-
-    /* FILTERS */
-    .filters {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 35px;
+    .tools-grid {
+        grid-template-columns: 1fr;
     }
 
     .filter-btn {
-        border: 1px solid var(--border);
-        background: var(--card);
-        color: var(--text);
-        padding: 9px 16px;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: 0.3s;
+        padding: 8px 13px;
     }
+}
 
-    .filter-btn:hover,
-    .filter-btn.active {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
+/* ==============================
+   REDUCED MOTION
+============================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
     }
+}
+</style></head><body><!-- ==============================
+     NAVBAR
+============================== --><nav><div class="logo">
+    🤖 AI Directory
+</div>
 
-    /* GRID */
-    .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-        gap: 25px;
-    }
+<button
+    class="theme-btn"
+    id="themeBtn"
+    onclick="toggleDarkMode()"
+    aria-label="Toggle dark mode"
+>
+    🌙 Dark Mode
+</button>
 
-    /* CARD */
-    .tool-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 25px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
+</nav><!-- ==============================
+     HERO
+============================== --><header><div class="hero-content">
 
-    .tool-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    }
-
-    .tool-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        margin-bottom: 18px;
-    }
-
-    .tool-card h3 {
-        margin-bottom: 10px;
-        font-size: 1.3rem;
-    }
-
-    .tool-card p {
-        color: var(--muted);
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-
-    .tool-card a {
-        text-decoration: none;
-        color: white;
-        background: var(--primary);
-        padding: 10px 18px;
-        border-radius: 8px;
-        display: inline-block;
-        transition: 0.3s;
-    }
-
-    .tool-card a:hover {
-        background: #1d4ed8;
-        transform: scale(1.03);
-    }
-
-    /* FOOTER */
-    footer {
-        background: #111827;
-        color: white;
-        text-align: center;
-        padding: 35px 20px;
-        margin-top: 50px;
-    }
-
-    footer p {
-        margin-bottom: 10px;
-    }
-
-    footer a {
-        color: #60a5fa;
-        text-decoration: none;
-    }
-
-    footer a:hover {
-        text-decoration: underline;
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-        nav {
-            padding: 12px 15px;
-        }
-
-        .logo {
-            font-size: 1.1rem;
-        }
-
-        header {
-            padding: 55px 20px;
-        }
-
-        .container {
-            padding: 35px 15px;
-        }
-    }
-</style>
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-<nav>
-    <div class="logo">🤖 AI Directory</div>
-    <button class="theme-btn" onclick="toggleDarkMode()">
-        🌙 Dark Mode
-    </button>
-</nav>
-
-<!-- HERO -->
-<header>
     <h1>AI Tool Directory</h1>
+
     <p>
-        Discover powerful AI tools for content creation, coding,
-        design, research, productivity and more.
+        Discover powerful AI tools for writing, coding,
+        design, research, productivity, and more —
+        all in one place.
     </p>
-</header>
-
-<!-- MAIN -->
-<div class="container">
-
-    <h2 class="section-title">Explore AI Tools</h2>
-
-    <!-- SEARCH -->
-    <div class="search-box">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Search AI tools..."
-            onkeyup="searchTools()"
-        >
-    </div>
-
-    <!-- FILTERS -->
-    <div class="filters">
-        <button class="filter-btn active" onclick="filterTools('all', this)">
-            All
-        </button>
-
-        <button class="filter-btn" onclick="filterTools('writing', this)">
-            ✍️ Writing
-        </button>
-
-        <button class="filter-btn" onclick="filterTools('coding', this)">
-            💻 Coding
-        </button>
-
-        <button class="filter-btn" onclick="filterTools('design', this)">
-            🎨 Design
-        </button>
-
-        <button class="filter-btn" onclick="filterTools('productivity', this)">
-            ⚡ Productivity
-        </button>
-    </div>
-
-    <!-- TOOLS -->
-    <div class="tools-grid" id="toolsGrid">
-
-        <!-- CHATGPT -->
-        <div class="tool-card" data-category="productivity">
-            <div class="tool-icon">🤖</div>
-            <h3>ChatGPT</h3>
-            <p>
-                AI assistant for writing, coding, learning,
-                brainstorming and productivity.
-            </p>
-            <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">
-                Visit Tool →
-            </a>
-        </div>
-
-        <!-- CLAUDE -->
-        <div class="tool-card" data-category="writing">
-            <div class="tool-icon">🧠</div>
-            <h3>Claude</h3>
-            <p>
-                Advanced AI assistant for writing, analysis,
-                long documents and complex tasks.
-            </p>
-            <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">
-                Visit Tool →
-            </a>
-        </div>
-
-        <!-- GEMINI -->
-        <div class="tool-card" data-category="productivity">
-            <div class="tool-icon">✨</div>
-            <h3>Gemini</h3>
-            <p>
-                Google's AI assistant for research, coding,
-                writing and everyday productivity.
-            </p>
-            <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">
-                Visit Tool →
-            </a>
-        </div>
-
-        <!-- CANVA -->
-        <div class="tool-card" data-category="design">
-            <div class="tool-icon">🎨</div>
-            <h3>Canva AI</h3>
-            <p>
-                Create graphics, presentations and social media
-                content with powerful AI features.
-            </p>
-            <a href="https://www.canva.com" target="_blank" rel="noopener noreferrer">
-                Visit Tool →
-            </a>
-        </div>
-
-        <!-- GITHUB COPILOT -->
-        <div class="tool-card" data-category="coding">
-            <div class="tool-icon">💻</div>
-            <h3>GitHub Copilot</h3>
-            <p>
-                AI-powered coding assistant that helps developers
-                write and understand code faster.
-            </p>
-            <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">
-                Visit Tool →
-            </a>
-        </div>
-
-        <!-- JASPER -->
-        <div class="tool-card" data-category="writing">
-            <div class="tool-icon">📝</div>
-            <h3>Jasper</h3>
-            <p>
-                AI platform designed to help create marketing
-                content and business copy.
-            </p>
-            <a href="https://www.jasper.ai" target="_blank" rel="noopener noreferrer">
-                Visit Tool →
-            </a>
-        </div>
-
-    </div>
 
 </div>
 
-<!-- FOOTER -->
-<footer>
-    <p>© 2026 AI Tool Directory. All rights reserved.</p>
+</header><!-- ==============================
+     MAIN CONTENT
+============================== --><main class="container"><h2 class="section-title">
+    Explore AI Tools
+</h2>
+
+<p class="section-subtitle">
+    Find the right AI tool for your next project.
+</p>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+    <span class="search-icon">🔍</span>
+
+    <input
+        type="search"
+        id="searchInput"
+        placeholder="Search AI tools..."
+        aria-label="Search AI tools"
+    >
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div
+    class="filters"
+    role="group"
+    aria-label="Filter AI tools"
+>
+
+    <button
+        class="filter-btn active"
+        data-filter="all"
+    >
+        All
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="writing"
+    >
+        ✍️ Writing
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="coding"
+    >
+        💻 Coding
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="design"
+    >
+        🎨 Design
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="productivity"
+    >
+        ⚡ Productivity
+    </button>
+
+</div>
+
+
+<!-- TOOLS -->
+
+<div
+    class="tools-grid"
+    id="toolsGrid"
+>
+
+    <!-- CHATGPT -->
+
+    <article
+        class="tool-card"
+        data-category="productivity"
+    >
+
+        <div class="tool-icon">
+            🤖
+        </div>
+
+        <h3>ChatGPT</h3>
+
+        <p>
+            AI assistant for writing, coding, learning,
+            brainstorming, problem-solving, and productivity.
+        </p>
+
+        <a
+            href="https://chatgpt.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Visit Tool →
+        </a>
+
+    </article>
+
+
+    <!-- CLAUDE -->
+
+    <article
+        class="tool-card"
+        data-category="writing"
+    >
+
+        <div class="tool-icon">
+            🧠
+        </div>
+
+        <h3>Claude</h3>
+
+        <p>
+            Advanced AI assistant for writing, analysis,
+            document work, research, and complex tasks.
+        </p>
+
+        <a
+            href="https://claude.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Visit Tool →
+        </a>
+
+    </article>
+
+
+    <!-- GEMINI -->
+
+    <article
+        class="tool-card"
+        data-category="productivity"
+    >
+
+        <div class="tool-icon">
+            ✨
+        </div>
+
+        <h3>Gemini</h3>
+
+        <p>
+            Google's AI assistant for research, coding,
+            writing, learning, and everyday productivity.
+        </p>
+
+        <a
+            href="https://gemini.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Visit Tool →
+        </a>
+
+    </article>
+
+
+    <!-- CANVA -->
+
+    <article
+        class="tool-card"
+        data-category="design"
+    >
+
+        <div class="tool-icon">
+            🎨
+        </div>
+
+        <h3>Canva AI</h3>
+
+        <p>
+            Create graphics, presentations, social media
+            content, and visual designs with AI-powered features.
+        </p>
+
+        <a
+            href="https://www.canva.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Visit Tool →
+        </a>
+
+    </article>
+
+
+    <!-- GITHUB COPILOT -->
+
+    <article
+        class="tool-card"
+        data-category="coding"
+    >
+
+        <div class="tool-icon">
+            💻
+        </div>
+
+        <h3>GitHub Copilot</h3>
+
+        <p>
+            AI-powered coding assistant that helps developers
+            write, understand, and improve code faster.
+        </p>
+
+        <a
+            href="https://github.com/features/copilot"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Visit Tool →
+        </a>
+
+    </article>
+
+
+    <!-- JASPER -->
+
+    <article
+        class="tool-card"
+        data-category="writing"
+    >
+
+        <div class="tool-icon">
+            📝
+        </div>
+
+        <h3>Jasper</h3>
+
+        <p>
+            AI platform designed to help create marketing
+            content, campaigns, and business copy.
+        </p>
+
+        <a
+            href="https://www.jasper.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Visit Tool →
+        </a>
+
+    </article>
+
+</div>
+
+
+<!-- NO RESULTS -->
+
+<div
+    class="no-results"
+    id="noResults"
+>
+
+    <div class="emoji">
+        🔎
+    </div>
+
+    <h3>No AI tools found</h3>
+
     <p>
-        Discover more AI tools and boost your productivity.
+        Try searching for another tool or category.
     </p>
-</footer>
 
-<script>
+</div>
 
-    /* DARK MODE */
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark");
+</main><!-- ==============================
+     FOOTER
+============================== --><footer><p>
+    © 2026 AI Tool Directory
+</p>
 
-        const button = document.querySelector(".theme-btn");
+<p class="footer-muted">
+    Discover useful AI tools and boost your productivity.
+</p>
 
-        if (document.body.classList.contains("dark")) {
-            button.innerHTML = "☀️ Light Mode";
+</footer><script>
+
+/* ==============================
+   VARIABLES
+============================== */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const cards =
+    document.querySelectorAll(".tool-card");
+
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
+
+const noResults =
+    document.getElementById("noResults");
+
+const themeBtn =
+    document.getElementById("themeBtn");
+
+
+let activeCategory = "all";
+
+
+/* ==============================
+   DARK MODE
+============================== */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+    const isDark =
+        document.body.classList.contains("dark");
+
+    themeBtn.innerHTML =
+        isDark
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+
+    localStorage.setItem(
+        "darkMode",
+        isDark
+    );
+}
+
+
+/* ==============================
+   LOAD SAVED THEME
+============================== */
+
+if (
+    localStorage.getItem("darkMode") === "true"
+) {
+
+    document.body.classList.add("dark");
+
+    themeBtn.innerHTML =
+        "☀️ Light Mode";
+}
+
+
+/* ==============================
+   FILTER & SEARCH
+============================== */
+
+function updateTools() {
+
+    const searchValue =
+        searchInput.value
+        .trim()
+        .toLowerCase();
+
+    let visibleCount = 0;
+
+
+    cards.forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        const category =
+            card.dataset.category;
+
+
+        const matchesSearch =
+            text.includes(searchValue);
+
+        const matchesCategory =
+            activeCategory === "all" ||
+            category === activeCategory;
+
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
+
+            card.style.display = "flex";
+
+            visibleCount++;
+
         } else {
-            button.innerHTML = "🌙 Dark Mode";
+
+            card.style.display = "none";
+
         }
+
+    });
+
+
+    noResults.style.display =
+        visibleCount === 0
+        ? "block"
+        : "none";
+}
+
+
+/* ==============================
+   SEARCH EVENT
+============================== */
+
+searchInput.addEventListener(
+    "input",
+    updateTools
+);
+
+
+/* ==============================
+   FILTER EVENTS
+============================== */
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            activeCategory =
+                button.dataset.filter;
+
+            updateTools();
+
+        }
+    );
+
+});
+
+
+/* ==============================
+   KEYBOARD SHORTCUT
+   Press "/" to focus search
+============================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "/" &&
+            document.activeElement !== searchInput
+        ) {
+
+            event.preventDefault();
+
+            searchInput.focus();
+
+        }
+
     }
+);
 
-    /* SEARCH */
-    function searchTools() {
-
-        const searchValue =
-            document.getElementById("searchInput")
-            .value
-            .toLowerCase();
-
-        const cards =
-            document.querySelectorAll(".tool-card");
-
-        cards.forEach(card => {
-
-            const text =
-                card.innerText.toLowerCase();
-
-            if (text.includes(searchValue)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-
-        });
-    }
-
-    /* FILTER */
-    function filterTools(category, button) {
-
-        const cards =
-            document.querySelectorAll(".tool-card");
-
-        const buttons =
-            document.querySelectorAll(".filter-btn");
-
-        buttons.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        cards.forEach(card => {
-
-            if (
-                category === "all" ||
-                card.dataset.category === category
-            ) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-
-        });
-    }
-
-</script>
-
-</body>
+</script></body>
 </html>

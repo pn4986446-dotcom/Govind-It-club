@@ -1,1015 +1,978 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Discover the best AI tools for writing, coding, design, research, and productivity.">
-<meta name="theme-color" content="#2563eb"><title>AI Tool Directory | Discover Powerful AI Tools</title><style>
-/* ==============================
-   RESET & VARIABLES
-============================== */
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+<title>Govind Finance Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa7bf;
+    --accent:#2dd4bf;
+    --accent-2:#60a5fa;
+    --glass:rgba(255,255,255,0.05);
+    --radius:14px;
 }
 
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary: #7c3aed;
-    --background: #f5f7fb;
-    --card: #ffffff;
-    --text: #111827;
-    --muted: #6b7280;
-    --border: #e5e7eb;
-    --header-text: #ffffff;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-    --radius: 18px;
+[data-theme="light"]{
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --muted:#475569;
+    --accent:#0b63ff;
+    --accent-2:#06b6d4;
+    --glass:rgba(9,30,66,0.05);
 }
 
-body.dark {
-    --background: #0f172a;
-    --card: #1e293b;
-    --text: #f8fafc;
-    --muted: #cbd5e1;
-    --border: #334155;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--background);
-    color: var(--text);
-    line-height: 1.6;
-    transition:
-        background 0.3s ease,
-        color 0.3s ease;
+body{
+    margin:0;
+    font-family:Inter,Arial,sans-serif;
+    color:var(--muted);
+    background:linear-gradient(180deg,var(--bg),#071022 120%);
+    padding:24px;
+    transition:.3s;
 }
 
-/* ==============================
-   NAVBAR
-============================== */
+/* ================= LOGIN PAGE ================= */
 
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 15px 6%;
-    background: rgba(255, 255, 255, 0.92);
-    border-bottom: 1px solid var(--border);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    transition: 0.3s ease;
-}
-
-body.dark nav {
-    background: rgba(15, 23, 42, 0.92);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--primary);
-}
-
-.theme-btn {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-
-    border: none;
-    background: var(--primary);
-    color: white;
-
-    padding: 10px 16px;
-    border-radius: 10px;
-
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-}
-
-.theme-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-/* ==============================
-   HERO
-============================== */
-
-header {
-    position: relative;
-    overflow: hidden;
-
-    text-align: center;
-    color: var(--header-text);
-
-    padding: 90px 20px;
+#loginPage{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
     background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--secondary)
-        );
+        radial-gradient(circle at top left,#1d4ed8 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#0f766e 0%,transparent 35%),
+        #071022;
 }
 
-header::before {
-    content: "";
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    top: -120px;
-    left: -100px;
-
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
+.login-box{
+    width:100%;
+    max-width:430px;
+    padding:32px;
+    border-radius:24px;
+    background:rgba(11,18,32,.92);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+    text-align:center;
+    backdrop-filter:blur(15px);
 }
 
-header::after {
-    content: "";
-    position: absolute;
-
-    width: 350px;
-    height: 350px;
-
-    right: -120px;
-    bottom: -180px;
-
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
+.login-logo{
+    width:75px;
+    height:75px;
+    margin:0 auto 15px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:800;
+    color:#022;
+    background:linear-gradient(135deg,var(--accent-2),var(--accent));
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 850px;
-    margin: auto;
+.login-box h1{
+    color:white;
+    margin:10px 0 8px;
 }
 
-header h1 {
-    font-size: clamp(2.4rem, 7vw, 4.5rem);
-    line-height: 1.1;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
+.login-box p{
+    font-size:14px;
+    margin-bottom:25px;
 }
 
-header p {
-    max-width: 700px;
-    margin: auto;
-
-    font-size: 1.1rem;
-    line-height: 1.7;
-
-    opacity: 0.95;
+.login-input{
+    width:100%;
+    padding:14px;
+    margin-bottom:12px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.05);
+    color:white;
+    outline:none;
 }
 
-/* ==============================
-   MAIN CONTAINER
-============================== */
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 60px 20px;
+.login-input:focus{
+    border-color:var(--accent-2);
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
+.login-btn{
+    width:100%;
+    padding:13px;
+    margin-bottom:10px;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:14px;
+    transition:.2s;
 }
 
-.section-subtitle {
-    text-align: center;
-    color: var(--muted);
-    margin-bottom: 30px;
+.login-btn:hover{
+    transform:translateY(-2px);
 }
 
-/* ==============================
-   SEARCH
-============================== */
-
-.search-box {
-    max-width: 700px;
-    margin: 0 auto 25px;
-    position: relative;
+.phone-btn{
+    color:#022;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
 }
 
-.search-box input {
-    width: 100%;
-
-    padding: 16px 20px;
-    padding-left: 50px;
-
-    border: 1px solid var(--border);
-    border-radius: 14px;
-
-    outline: none;
-
-    background: var(--card);
-    color: var(--text);
-
-    font-size: 16px;
-
-    box-shadow: var(--shadow);
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+.google-btn{
+    background:white;
+    color:#222;
 }
 
-.search-icon {
-    position: absolute;
-    left: 18px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    font-size: 20px;
-    pointer-events: none;
+.facebook-btn{
+    background:#1877f2;
+    color:white;
 }
 
-.search-box input::placeholder {
-    color: var(--muted);
+.divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:18px 0;
+    font-size:12px;
 }
 
-.search-box input:focus {
-    border-color: var(--primary);
-
-    box-shadow:
-        0 0 0 4px rgba(37, 99, 235, 0.12),
-        var(--shadow);
+.divider::before,
+.divider::after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:rgba(255,255,255,.12);
 }
 
-/* ==============================
-   FILTERS
-============================== */
-
-.filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    gap: 10px;
-    margin-bottom: 40px;
+.skip-btn{
+    margin-top:12px;
+    background:transparent;
+    color:#9aa7bf;
+    border:1px solid rgba(255,255,255,.1);
 }
 
-.filter-btn {
-    border: 1px solid var(--border);
-
-    background: var(--card);
-    color: var(--text);
-
-    padding: 9px 17px;
-    border-radius: 25px;
-
-    cursor: pointer;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+.skip-btn:hover{
+    color:white;
 }
 
-.filter-btn:hover {
-    transform: translateY(-2px);
+#otpSection{
+    display:none;
 }
 
-.filter-btn.active {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
+.back-phone{
+    background:transparent;
+    color:var(--accent-2);
+    border:0;
+    cursor:pointer;
+    margin-bottom:15px;
 }
 
-/* ==============================
-   TOOL GRID
-============================== */
-
-.tools-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(270px, 1fr));
-
-    gap: 25px;
+#loginMessage{
+    margin-top:10px;
+    font-size:13px;
+    color:var(--accent);
 }
 
-/* ==============================
-   TOOL CARD
-============================== */
+/* ================= MAIN WEBSITE ================= */
 
-.tool-card {
-    display: flex;
-    flex-direction: column;
-
-    background: var(--card);
-    border: 1px solid var(--border);
-
-    border-radius: var(--radius);
-
-    padding: 26px;
-
-    box-shadow: var(--shadow);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+#mainApp{
+    display:none;
 }
 
-.tool-card:hover {
-    transform: translateY(-7px);
-
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.12);
-
-    border-color: rgba(37, 99, 235, 0.3);
+.container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    gap:18px;
 }
 
-.tool-icon {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 18px;
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--secondary)
-        );
-
-    color: white;
-
-    font-size: 24px;
-
-    box-shadow:
-        0 8px 20px rgba(37, 99, 235, 0.2);
+header.site-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px;
+    border-radius:var(--radius);
+    background:linear-gradient(90deg,var(--card),rgba(255,255,255,.02));
+    box-shadow:0 8px 30px rgba(2,6,23,.6);
 }
 
-.tool-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.3rem;
+.brand{
+    display:flex;
+    gap:12px;
+    align-items:center;
 }
 
-.tool-card p {
-    flex-grow: 1;
-
-    color: var(--muted);
-
-    line-height: 1.7;
-
-    margin-bottom: 22px;
+.logo{
+    width:56px;
+    height:56px;
+    border-radius:12px;
+    background:linear-gradient(90deg,var(--accent-2),var(--accent));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    color:#022;
 }
 
-.tool-card a {
-    align-self: flex-start;
-
-    text-decoration: none;
-
-    color: white;
-    background: var(--primary);
-
-    padding: 10px 18px;
-
-    border-radius: 9px;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+header h1{
+    margin:0;
+    font-size:18px;
 }
 
-.tool-card a:hover {
-    background: var(--primary-dark);
-    transform: translateX(3px);
+header p{
+    margin:0;
+    font-size:13px;
 }
 
-/* ==============================
-   NO RESULTS
-============================== */
-
-.no-results {
-    display: none;
-
-    text-align: center;
-
-    padding: 50px 20px;
-
-    color: var(--muted);
+.top-actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
 }
 
-.no-results .emoji {
-    font-size: 45px;
-    margin-bottom: 10px;
+.theme-toggle{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.06);
+    padding:8px 10px;
+    border-radius:10px;
+    color:var(--accent-2);
+    cursor:pointer;
 }
 
-/* ==============================
-   FOOTER
-============================== */
-
-footer {
-    background: #111827;
-    color: white;
-
-    text-align: center;
-
-    padding: 40px 20px;
-
-    margin-top: 40px;
+nav.main{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
-footer p {
-    margin-bottom: 8px;
+.nav-link{
+    padding:8px 12px;
+    border-radius:999px;
+    background:var(--glass);
+    color:var(--accent-2);
+    text-decoration:none;
+    font-weight:600;
+    font-size:13px;
 }
 
-footer .footer-muted {
-    color: #9ca3af;
-    font-size: 14px;
+.grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:18px;
 }
 
-/* ==============================
-   MOBILE
-============================== */
-
-@media (max-width: 600px) {
-
-    nav {
-        padding: 12px 15px;
-    }
-
-    .logo {
-        font-size: 1.05rem;
-    }
-
-    .theme-btn {
-        padding: 9px 12px;
-    }
-
-    header {
-        padding: 70px 20px;
-    }
-
-    header h1 {
-        font-size: 2.5rem;
-    }
-
-    header p {
-        font-size: 1rem;
-    }
-
-    .container {
-        padding: 45px 15px;
-    }
-
-    .tools-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .filter-btn {
-        padding: 8px 13px;
+@media(min-width:768px){
+    .grid{
+        grid-template-columns:360px 1fr;
     }
 }
 
-/* ==============================
-   REDUCED MOTION
-============================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
-    }
+.col-left,
+.col-right{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
 }
-</style></head><body><!-- ==============================
-     NAVBAR
-============================== --><nav><div class="logo">
-    🤖 AI Directory
-</div>
 
-<button
-    class="theme-btn"
-    id="themeBtn"
-    onclick="toggleDarkMode()"
-    aria-label="Toggle dark mode"
->
-    🌙 Dark Mode
-</button>
+.card{
+    background:var(--card);
+    padding:18px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.02);
+    box-shadow:0 8px 30px rgba(2,6,23,.48);
+    transition:.18s;
+    overflow:hidden;
+}
 
-</nav><!-- ==============================
-     HERO
-============================== --><header><div class="hero-content">
+.card:hover{
+    transform:translateY(-4px);
+}
 
-    <h1>AI Tool Directory</h1>
+h2{
+    margin:0 0 8px;
+    color:var(--accent-2);
+}
 
-    <p>
-        Discover powerful AI tools for writing, coding,
-        design, research, productivity, and more —
-        all in one place.
-    </p>
+p{
+    margin:0 0 8px;
+}
 
-</div>
+input[type="number"]{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.08);
+    background:transparent;
+    color:inherit;
+    margin-bottom:8px;
+}
 
-</header><!-- ==============================
-     MAIN CONTENT
-============================== --><main class="container"><h2 class="section-title">
-    Explore AI Tools
-</h2>
+.ops{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
 
-<p class="section-subtitle">
-    Find the right AI tool for your next project.
-</p>
+.btn{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    border:0;
+    color:#022;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+}
 
+.result{
+    margin-top:10px;
+    padding:12px;
+    border-radius:8px;
+    background:linear-gradient(90deg,rgba(6,182,191,.06),rgba(96,165,250,.03));
+    font-weight:700;
+    color:var(--accent-2);
+}
 
-<!-- SEARCH -->
+.small{
+    font-size:13px;
+}
 
-<div class="search-box">
+footer.site-footer{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:18px 0;
+}
 
-    <span class="search-icon">🔍</span>
+footer.site-footer a{
+    color:var(--accent-2);
+    text-decoration:none;
+    margin-top:5px;
+}
 
-    <input
-        type="search"
-        id="searchInput"
-        placeholder="Search AI tools..."
-        aria-label="Search AI tools"
-    >
+.ttt-board{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    width:270px;
+    margin:20px auto;
+}
 
-</div>
+.ttt-cell{
+    width:85px;
+    height:85px;
+    background:rgba(255,255,255,.05);
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:40px;
+    font-weight:bold;
+    color:var(--accent-2);
+    border:1px solid rgba(255,255,255,.1);
+}
+</style>
+</head>
 
+<body>
 
-<!-- FILTERS -->
+<!-- ================= LOGIN PAGE ================= -->
 
-<div
-    class="filters"
-    role="group"
-    aria-label="Filter AI tools"
->
+<div id="loginPage">
 
-    <button
-        class="filter-btn active"
-        data-filter="all"
-    >
-        All
-    </button>
+    <div class="login-box">
 
-    <button
-        class="filter-btn"
-        data-filter="writing"
-    >
-        ✍️ Writing
-    </button>
+        <div class="login-logo">GF</div>
 
-    <button
-        class="filter-btn"
-        data-filter="coding"
-    >
-        💻 Coding
-    </button>
+        <!-- Phone Login -->
+        <div id="phoneSection">
 
-    <button
-        class="filter-btn"
-        data-filter="design"
-    >
-        🎨 Design
-    </button>
+            <h1>Welcome Back 👋</h1>
 
-    <button
-        class="filter-btn"
-        data-filter="productivity"
-    >
-        ⚡ Productivity
-    </button>
+            <p>Login to continue to <b>Govind Finance Hub</b></p>
 
-</div>
+            <input
+                type="tel"
+                id="phoneNumber"
+                class="login-input"
+                placeholder="Enter mobile number"
+                maxlength="10"
+            >
 
+            <button class="login-btn phone-btn" onclick="sendOTP()">
+                📱 Continue with Phone
+            </button>
 
-<!-- TOOLS -->
+            <div class="divider">OR</div>
 
-<div
-    class="tools-grid"
-    id="toolsGrid"
->
+            <button class="login-btn google-btn" onclick="socialLogin('Google')">
+                🔴 Continue with Google
+            </button>
 
-    <!-- CHATGPT -->
+            <button class="login-btn facebook-btn" onclick="socialLogin('Facebook')">
+                🔵 Continue with Facebook
+            </button>
 
-    <article
-        class="tool-card"
-        data-category="productivity"
-    >
+            <button class="login-btn skip-btn" onclick="skipLogin()">
+                ⏭️ Skip for now
+            </button>
 
-        <div class="tool-icon">
-            🤖
         </div>
 
-        <h3>ChatGPT</h3>
 
-        <p>
-            AI assistant for writing, coding, learning,
-            brainstorming, problem-solving, and productivity.
-        </p>
+        <!-- OTP Section -->
 
-        <a
-            href="https://chatgpt.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Visit Tool →
-        </a>
+        <div id="otpSection">
 
-    </article>
+            <h1>Verify OTP 🔐</h1>
 
+            <p>Enter the OTP sent to your mobile number.</p>
 
-    <!-- CLAUDE -->
+            <input
+                type="number"
+                id="otp"
+                class="login-input"
+                placeholder="Enter 6-digit OTP"
+            >
 
-    <article
-        class="tool-card"
-        data-category="writing"
-    >
+            <button class="login-btn phone-btn" onclick="verifyOTP()">
+                ✅ Verify & Continue
+            </button>
 
-        <div class="tool-icon">
-            🧠
+            <button class="back-phone" onclick="backToPhone()">
+                ← Change phone number
+            </button>
+
         </div>
 
-        <h3>Claude</h3>
+        <div id="loginMessage"></div>
 
-        <p>
-            Advanced AI assistant for writing, analysis,
-            document work, research, and complex tasks.
-        </p>
-
-        <a
-            href="https://claude.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Visit Tool →
-        </a>
-
-    </article>
-
-
-    <!-- GEMINI -->
-
-    <article
-        class="tool-card"
-        data-category="productivity"
-    >
-
-        <div class="tool-icon">
-            ✨
-        </div>
-
-        <h3>Gemini</h3>
-
-        <p>
-            Google's AI assistant for research, coding,
-            writing, learning, and everyday productivity.
-        </p>
-
-        <a
-            href="https://gemini.google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Visit Tool →
-        </a>
-
-    </article>
-
-
-    <!-- CANVA -->
-
-    <article
-        class="tool-card"
-        data-category="design"
-    >
-
-        <div class="tool-icon">
-            🎨
-        </div>
-
-        <h3>Canva AI</h3>
-
-        <p>
-            Create graphics, presentations, social media
-            content, and visual designs with AI-powered features.
-        </p>
-
-        <a
-            href="https://www.canva.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Visit Tool →
-        </a>
-
-    </article>
-
-
-    <!-- GITHUB COPILOT -->
-
-    <article
-        class="tool-card"
-        data-category="coding"
-    >
-
-        <div class="tool-icon">
-            💻
-        </div>
-
-        <h3>GitHub Copilot</h3>
-
-        <p>
-            AI-powered coding assistant that helps developers
-            write, understand, and improve code faster.
-        </p>
-
-        <a
-            href="https://github.com/features/copilot"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Visit Tool →
-        </a>
-
-    </article>
-
-
-    <!-- JASPER -->
-
-    <article
-        class="tool-card"
-        data-category="writing"
-    >
-
-        <div class="tool-icon">
-            📝
-        </div>
-
-        <h3>Jasper</h3>
-
-        <p>
-            AI platform designed to help create marketing
-            content, campaigns, and business copy.
-        </p>
-
-        <a
-            href="https://www.jasper.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Visit Tool →
-        </a>
-
-    </article>
-
-</div>
-
-
-<!-- NO RESULTS -->
-
-<div
-    class="no-results"
-    id="noResults"
->
-
-    <div class="emoji">
-        🔎
     </div>
 
-    <h3>No AI tools found</h3>
+</div>
 
-    <p>
-        Try searching for another tool or category.
-    </p>
+
+<!-- ================= MAIN APP ================= -->
+
+<div id="mainApp">
+
+<div class="container">
+
+<header class="site-header">
+
+    <div class="brand">
+
+        <div class="logo">GF</div>
+
+        <div>
+            <h1>Govind Finance Hub</h1>
+            <p>Practical tools to manage your money</p>
+        </div>
+
+    </div>
+
+    <div class="top-actions">
+
+        <nav class="main">
+
+            <a class="nav-link" href="#calculator">Calculator</a>
+            <a class="nav-link" href="#savings">Savings</a>
+            <a class="nav-link" href="#tips">Tips</a>
+            <a class="nav-link" href="#game">Game</a>
+            <a class="nav-link" href="#contact">Contact</a>
+
+        </nav>
+
+        <button id="themeToggle" class="theme-toggle">
+            🌙
+        </button>
+
+    </div>
+
+</header>
+
+
+<section class="card">
+
+<h2>Welcome</h2>
+
+<p class="small">
+Welcome to Govind Finance Hub — clear, friendly financial tools and tips to help you save and grow.
+</p>
+
+</section>
+
+
+<div class="grid">
+
+<div class="col-left">
+
+<section id="calculator" class="card">
+
+<h2>Calculator</h2>
+
+<label class="small">First number</label>
+
+<input type="number" id="num1" placeholder="0">
+
+<label class="small">Second number</label>
+
+<input type="number" id="num2" placeholder="0">
+
+<div class="ops">
+
+<button class="btn" data-op="add">➕ Add</button>
+<button class="btn" data-op="subtract">➖ Subtract</button>
+<button class="btn" data-op="multiply">✖️ Multiply</button>
+<button class="btn" data-op="divide">➗ Divide</button>
 
 </div>
 
-</main><!-- ==============================
-     FOOTER
-============================== --><footer><p>
-    © 2026 AI Tool Directory
-</p>
+<div id="answer" class="result">—</div>
 
-<p class="footer-muted">
-    Discover useful AI tools and boost your productivity.
-</p>
+</section>
 
-</footer><script>
-
-/* ==============================
-   VARIABLES
-============================== */
-
-const searchInput =
-    document.getElementById("searchInput");
-
-const cards =
-    document.querySelectorAll(".tool-card");
-
-const filterButtons =
-    document.querySelectorAll(".filter-btn");
-
-const noResults =
-    document.getElementById("noResults");
-
-const themeBtn =
-    document.getElementById("themeBtn");
+</div>
 
 
-let activeCategory = "all";
+<div class="col-right">
+
+<section id="savings" class="card">
+
+<h2>Savings Calculator</h2>
+
+<label class="small">Monthly income</label>
+
+<input type="number" id="income" placeholder="0">
+
+<label class="small">Monthly expenses</label>
+
+<input type="number" id="expenses" placeholder="0">
+
+<button class="btn" id="calcSavings">
+Calculate
+</button>
+
+<div id="savingResult" class="result">
+—
+</div>
+
+</section>
+
+</div>
+
+</div>
 
 
-/* ==============================
-   DARK MODE
-============================== */
+<section id="tips" class="card">
 
-function toggleDarkMode() {
+<h2>Finance Tips</h2>
 
-    document.body.classList.toggle("dark");
+<ul>
 
-    const isDark =
-        document.body.classList.contains("dark");
+<li>Automate savings — pay yourself first.</li>
 
-    themeBtn.innerHTML =
-        isDark
-        ? "☀️ Light Mode"
-        : "🌙 Dark Mode";
+<li>Keep an emergency fund for 3–6 months.</li>
 
-    localStorage.setItem(
-        "darkMode",
-        isDark
+<li>Track recurring subscriptions and cut unused ones.</li>
+
+<li>Invest regularly for long-term goals.</li>
+
+</ul>
+
+</section>
+
+
+<section id="game" class="card"
+style="display:flex;flex-direction:column;align-items:center;">
+
+<h2>Game</h2>
+
+<div id="ttt-board" class="ttt-board">
+
+<div class="ttt-cell" data-index="0"></div>
+<div class="ttt-cell" data-index="1"></div>
+<div class="ttt-cell" data-index="2"></div>
+
+<div class="ttt-cell" data-index="3"></div>
+<div class="ttt-cell" data-index="4"></div>
+<div class="ttt-cell" data-index="5"></div>
+
+<div class="ttt-cell" data-index="6"></div>
+<div class="ttt-cell" data-index="7"></div>
+<div class="ttt-cell" data-index="8"></div>
+
+</div>
+
+<div id="ttt-status"></div>
+
+<button id="reset-ttt" class="btn">
+New Game
+</button>
+
+</section>
+
+
+<section id="contact" class="card">
+
+<h2>Contact</h2>
+
+<footer class="site-footer">
+
+<p>© 2026 Govind Finance Hub</p>
+
+<p>Created by Govind Sharma</p>
+
+<a href="mailto:govindfinancehub@gmail.com">
+Email: govindfinancehub@gmail.com
+</a>
+
+<a href="https://instagram.com/govindfimacehub_456"
+target="_blank">
+Instagram: @govindfimacehub_456
+</a>
+
+<a href="https://x.com/govindfinaace_4"
+target="_blank">
+X: @govindfinaace_4
+</a>
+
+</footer>
+
+</section>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ================= LOGIN SYSTEM ================= */
+
+let generatedOTP = null;
+
+function sendOTP(){
+
+    const phone =
+    document.getElementById("phoneNumber").value.trim();
+
+    const message =
+    document.getElementById("loginMessage");
+
+    if(phone.length !== 10){
+
+        message.innerText =
+        "Please enter a valid 10-digit mobile number.";
+
+        return;
+    }
+
+    /*
+    DEMO OTP SYSTEM
+
+    This generates a random OTP locally.
+    For real OTP authentication,
+    connect Firebase Authentication
+    or another secure authentication service.
+    */
+
+    generatedOTP =
+    Math.floor(100000 + Math.random() * 900000);
+
+    console.log("Demo OTP:", generatedOTP);
+
+    document.getElementById("phoneSection").style.display="none";
+
+    document.getElementById("otpSection").style.display="block";
+
+    message.innerText =
+    "Demo OTP generated. Check the browser console.";
+
+}
+
+
+function verifyOTP(){
+
+    const otp =
+    document.getElementById("otp").value;
+
+    const message =
+    document.getElementById("loginMessage");
+
+    if(otp == generatedOTP){
+
+        loginSuccess();
+
+    }else{
+
+        message.innerText =
+        "Incorrect OTP. Please try again.";
+
+    }
+
+}
+
+
+function socialLogin(provider){
+
+    /*
+    DEMO ONLY
+
+    Real Google/Facebook login requires
+    Firebase Authentication or OAuth.
+    */
+
+    alert(
+        provider +
+        " login selected.\n\nReal authentication needs to be connected."
     );
+
 }
 
 
-/* ==============================
-   LOAD SAVED THEME
-============================== */
+function skipLogin(){
 
-if (
-    localStorage.getItem("darkMode") === "true"
-) {
+    loginSuccess();
 
-    document.body.classList.add("dark");
-
-    themeBtn.innerHTML =
-        "☀️ Light Mode";
 }
 
 
-/* ==============================
-   FILTER & SEARCH
-============================== */
+function backToPhone(){
 
-function updateTools() {
+    document.getElementById("phoneSection").style.display="block";
 
-    const searchValue =
-        searchInput.value
-        .trim()
-        .toLowerCase();
+    document.getElementById("otpSection").style.display="none";
 
-    let visibleCount = 0;
+    document.getElementById("loginMessage").innerText="";
+
+}
 
 
-    cards.forEach(card => {
+function loginSuccess(){
 
-        const text =
-            card.innerText.toLowerCase();
+    document.getElementById("loginPage").style.display="none";
 
-        const category =
-            card.dataset.category;
+    document.getElementById("mainApp").style.display="block";
 
-
-        const matchesSearch =
-            text.includes(searchValue);
-
-        const matchesCategory =
-            activeCategory === "all" ||
-            category === activeCategory;
+}
 
 
-        if (
-            matchesSearch &&
-            matchesCategory
-        ) {
+/* ================= THEME ================= */
 
-            card.style.display = "flex";
+const themeToggle =
+document.getElementById("themeToggle");
 
-            visibleCount++;
+themeToggle.addEventListener("click",()=>{
 
-        } else {
+    const current =
+    document.documentElement.getAttribute("data-theme");
 
-            card.style.display = "none";
+    const next =
+    current === "light" ? "dark" : "light";
+
+    document.documentElement
+    .setAttribute("data-theme",next);
+
+    localStorage.setItem("gh_theme",next);
+
+});
+
+
+/* ================= CALCULATOR ================= */
+
+function getNums(){
+
+    const a =
+    Number(document.getElementById("num1").value);
+
+    const b =
+    Number(document.getElementById("num2").value);
+
+    return {a,b};
+
+}
+
+
+document.querySelectorAll("[data-op]")
+.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        const {a,b}=getNums();
+
+        const op =
+        btn.getAttribute("data-op");
+
+        let res;
+
+        switch(op){
+
+            case "add":
+                res=a+b;
+                break;
+
+            case "subtract":
+                res=a-b;
+                break;
+
+            case "multiply":
+                res=a*b;
+                break;
+
+            case "divide":
+                res =
+                b===0
+                ? "Cannot divide by zero"
+                : a/b;
+                break;
+
+        }
+
+        document.getElementById("answer")
+        .textContent=res;
+
+    });
+
+});
+
+
+/* ================= SAVINGS ================= */
+
+document.getElementById("calcSavings")
+.addEventListener("click",()=>{
+
+    const income =
+    Number(document.getElementById("income").value)||0;
+
+    const expenses =
+    Number(document.getElementById("expenses").value)||0;
+
+    document.getElementById("savingResult")
+    .textContent =
+    "Savings: ₹" + (income-expenses);
+
+});
+
+
+/* ================= TIC TAC TOE ================= */
+
+let turn="X";
+
+let board=
+Array(9).fill(null);
+
+const statusEl=
+document.getElementById("ttt-status");
+
+
+document.querySelectorAll(".ttt-cell")
+.forEach(cell=>{
+
+    cell.addEventListener("click",()=>{
+
+        const idx=
+        Number(cell.dataset.index);
+
+        if(board[idx] || checkWinner())
+        return;
+
+        board[idx]=turn;
+
+        cell.innerText=turn;
+
+        if(checkWinner()){
+
+            statusEl.innerText=
+            turn+" wins!";
+
+        }
+
+        else if(
+            board.every(cell=>cell!==null)
+        ){
+
+            statusEl.innerText=
+            "Draw!";
+
+        }
+
+        else{
+
+            turn=
+            turn==="X" ? "O" : "X";
 
         }
 
     });
 
-
-    noResults.style.display =
-        visibleCount === 0
-        ? "block"
-        : "none";
-}
+});
 
 
-/* ==============================
-   SEARCH EVENT
-============================== */
+document.getElementById("reset-ttt")
+.addEventListener("click",()=>{
 
-searchInput.addEventListener(
-    "input",
-    updateTools
-);
+    turn="X";
 
+    board=
+    Array(9).fill(null);
 
-/* ==============================
-   FILTER EVENTS
-============================== */
+    statusEl.innerText="";
 
-filterButtons.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            filterButtons.forEach(btn => {
-                btn.classList.remove("active");
-            });
-
-            button.classList.add("active");
-
-            activeCategory =
-                button.dataset.filter;
-
-            updateTools();
-
-        }
-    );
+    document.querySelectorAll(".ttt-cell")
+    .forEach(cell=>{
+        cell.innerText="";
+    });
 
 });
 
 
-/* ==============================
-   KEYBOARD SHORTCUT
-   Press "/" to focus search
-============================== */
+function checkWinner(){
 
-document.addEventListener(
-    "keydown",
-    event => {
+    const wins=[
 
-        if (
-            event.key === "/" &&
-            document.activeElement !== searchInput
-        ) {
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
 
-            event.preventDefault();
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
 
-            searchInput.focus();
+        [0,4,8],
+        [2,4,6]
 
-        }
+    ];
 
-    }
-);
+    return wins.some(comb=>{
 
-</script></body>
+        const [a,b,c]=comb;
+
+        return board[a] &&
+        board[a]===board[b] &&
+        board[a]===board[c];
+
+    });
+
+}
+
+</script>
+
+</body>
 </html>

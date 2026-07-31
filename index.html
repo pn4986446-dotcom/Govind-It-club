@@ -1,243 +1,626 @@
-
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Govind Finance Hub</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <style>
-            :root{
-                --bg:#0f1724; --card:#0b1220; --muted:#9aa7bf; --accent:#2dd4bf; --accent-2:#60a5fa; --glass: rgba(255,255,255,0.04);
-                --radius:12px; --transition:.18s;
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Govind Finance Hub</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --bg: #0f1724;
+            --bg-end: #071022;
+            --card: #0b1220;
+            --muted: #9aa7bf;
+            --accent: #2dd4bf;
+            --accent-2: #60a5fa;
+            --glass: rgba(255,255,255,0.04);
+            --border-color: rgba(255, 255, 255, 0.08); /* Dynamic border variable added */
+            --radius: 12px;
+            --transition: .18s;
+        }
+
+        [data-theme="light"] {
+            --bg: #f4f7fb;
+            --bg-end: #e2e8f0;
+            --card: #ffffff;
+            --muted: #475569;
+            --accent: #0b63ff;
+            --accent-2: #06b6d4;
+            --glass: rgba(9,30,66,0.04);
+            --border-color: rgba(0, 0, 0, 0.12); /* Darker border for light theme */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--muted);
+            background: linear-gradient(180deg, var(--bg), var(--bg-end) 120%);
+            padding: 24px;
+            transition: background var(--transition);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header.site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            padding: 18px;
+            border-radius: var(--radius);
+            background: linear-gradient(
+                90deg,
+                var(--card),
+                rgba(255,255,255,0.02)
+            );
+            box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .logo {
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+            border-radius: 12px;
+            background: linear-gradient(
+                90deg,
+                var(--accent-2),
+                var(--accent)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #022;
+            box-shadow: 0 8px 20px rgba(8,20,40,0.18);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--accent-2);
+        }
+
+        header p {
+            margin: 3px 0 0;
+            font-size: 13px;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--border-color); /* Updated */
+            padding: 8px 10px;
+            border-radius: 10px;
+            color: var(--accent-2);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        nav.main {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--glass);
+            color: var(--accent-2);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-1px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 360px 1fr;
             }
-            [data-theme='light']{
-                --bg:#f4f7fb; --card:#ffffff; --muted:#475569; --accent:#0b63ff; --accent-2:#06b6d4; --glass: rgba(9,30,66,0.04);
+        }
+
+        .col-left,
+        .col-right {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color); /* Updated */
+            box-shadow: 0 8px 30px rgba(2,6,23,0.48);
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(2,6,23,0.58);
+        }
+
+        h2 {
+            margin: 0 0 8px;
+            color: var(--accent-2);
+        }
+
+        p {
+            margin: 0 0 8px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color); /* Updated */
+            background: rgba(255,255,255,0.03);
+            color: inherit;
+            margin-bottom: 8px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        input:focus {
+            border-color: var(--accent-2);
+        }
+
+        .ops {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(
+                90deg,
+                var(--accent),
+                var(--accent-2)
+            );
+            border: 0;
+            color: #022;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .15s, opacity .15s;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: scale(.97);
+        }
+
+        .result {
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            background: linear-gradient(
+                90deg,
+                rgba(6,182,191,0.06),
+                rgba(96,165,250,0.03)
+            );
+            font-weight: 700;
+            color: var(--accent-2);
+            min-height: 42px;
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        footer.site-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            color: var(--muted);
+            padding: 18px 0;
+        }
+
+        footer.site-footer p {
+            margin: 0 0 5px;
+        }
+
+        footer.site-footer a {
+            color: var(--accent-2);
+            text-decoration: none;
+            margin-top: 4px;
+        }
+
+        footer.site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .ttt-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 270px;
+            margin: 20px auto;
+        }
+
+        .ttt-cell {
+            width: 85px;
+            height: 85px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 40px;
+            font-weight: bold;
+            color: var(--accent-2);
+            border: 1px solid var(--border-color); /* Updated */
+            user-select: none;
+        }
+
+        .ttt-cell:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 12px;
             }
 
-            *{box-sizing:border-box}
-            html,body{height:100%}
-            body{
-                margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--muted);
-                background:linear-gradient(180deg,var(--bg), #071022 120%);padding:24px;transition:background var(--transition);
+            header.site-header {
+                flex-direction: column;
+                align-items: stretch;
             }
 
-            .container{max-width:1100px;margin:0 auto;display:grid;gap:18px}
-
-            header.site-header{display:flex;justify-content:space-between;align-items:center;padding:18px;border-radius:var(--radius);background:linear-gradient(90deg,var(--card),rgba(255,255,255,0.02));box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-            .brand{display:flex;gap:12px;align-items:center}
-            .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(90deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;color:#022;box-shadow:0 8px 20px rgba(8,20,40,0.18)}
-            header h1{margin:0;font-size:18px}
-            header p{margin:0;color:var(--muted);font-size:13px}
-
-            .top-actions{display:flex;gap:8px;align-items:center}
-            .theme-toggle{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:10px;color:var(--accent-2);cursor:pointer}
-
-            nav.main{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-            .nav-link{padding:8px 12px;border-radius:999px;background:var(--glass);color:var(--accent-2);text-decoration:none;font-weight:600}
-
-            .grid{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
-            @media (min-width: 768px) {
-                .grid{grid-template-columns:360px 1fr}
+            .top-actions {
+                justify-content: space-between;
+                align-items: flex-start;
             }
-            .col-left{display:flex;flex-direction:column;gap:18px}
-            .col-right{display:flex;flex-direction:column;gap:18px}
-            .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 8px 30px rgba(2,6,23,0.48);transition:transform var(--transition),box-shadow var(--transition)}
-            .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.58)}
 
-            h2{margin:0 0 8px 0;color:var(--accent-2)}
-            p{margin:0 0 8px 0}
+            nav.main {
+                justify-content: flex-start;
+            }
 
-            /* prevent absolute-positioned widgets from overlapping outside their card */
-            .card{overflow:hidden}
+            .ttt-board {
+                width: 240px;
+            }
 
+            .ttt-cell {
+                width: 74px;
+                height: 74px;
+            }
+        }
+    </style>
+</head>
 
-            input[type="number"], input[type="text"]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:8px}
-            .ops{display:flex;gap:8px;flex-wrap:wrap}
-            .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:0;color:#022;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
-            .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--accent-2)}
+<body>
 
-            .result{margin-top:10px;padding:12px;border-radius:8px;background:linear-gradient(90deg,rgba(6,182,191,0.06),rgba(96,165,250,0.03));font-weight:700;color:var(--accent-2)}
+<div class="container">
 
-            .small{font-size:13px;color:var(--muted)}
-
-            footer.site-footer{display:flex;flex-direction:column;align-items:flex-start;color:var(--muted);padding:18px 0}
-            footer.site-footer p{margin:0 0 5px 0}
-            footer.site-footer a{color:var(--accent-2);text-decoration:none;margin-top:4px}
-            footer.site-footer a:hover{text-decoration:underline}
-
-            .ttt-board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:270px;margin:20px auto;}
-            .ttt-cell{width:85px;height:85px;background:rgba(255,255,255,0.05);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:40px;font-weight:bold;color:var(--accent-2);border: 1px solid rgba(255,255,255,0.1);}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <header class="site-header">
-                <div class="brand">
-                    <div class="logo">GF</div>
-                    <div>
-                        <h1>Govind Finance Hub</h1>
-                        <p class="small">Practical tools to manage your money</p>
-                    </div>
-                </div>
-
-                <div class="top-actions">
-                    <nav class="main" aria-label="Main navigation">
-                        <a class="nav-link" href="#calculator">Calculator</a>
-                        <a class="nav-link" href="#savings">Savings</a>
-                        <a class="nav-link" href="#tips">Tips</a>
-                        <a class="nav-link" href="#game">Game</a>
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </nav>
-                    <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle theme">🌙</button>
-                </div>
-            </header>
-
-            <section class="card">
-                <h2>Welcome</h2>
-                <p class="small">Welcome to Govind Finance Hub — clear, friendly financial tools and tips to help you save and grow.</p>
-            </section>
-
-            <div class="grid">
-                <div class="col-left">
-                    <section id="calculator" class="card" aria-labelledby="calcHeading">
-                        <h2 id="calcHeading">Calculator</h2>
-                        <label class="small">First number</label>
-                        <input type="number" id="num1" inputmode="decimal" aria-label="First number" placeholder="0">
-                        <label class="small">Second number</label>
-                        <input type="number" id="num2" inputmode="decimal" aria-label="Second number" placeholder="0">
-    
-                        <div class="ops" role="group" aria-label="Operations">
-                            <button class="btn" data-op="add">➕ Add</button>
-                            <button class="btn" data-op="subtract">➖ Subtract</button>
-                            <button class="btn" data-op="multiply">✖️ Multiply</button>
-                            <button class="btn" data-op="divide">➗ Divide</button>
-                        </div>
-    
-                        <div id="answer" class="result" aria-live="polite">—</div>
-                    </section>
-                </div>
-                <div class="col-right">
-                    <section id="savings" class="card">
-                        <h2>Savings Calculator</h2>
-                        <label class="small">Monthly income</label>
-                        <input type="number" id="income" placeholder="0">
-                        <label class="small">Monthly expenses</label>
-                        <input type="number" id="expenses" placeholder="0">
-                        <div style="margin-top:8px">
-                            <button class="btn" id="calcSavings">Calculate</button>
-                        </div>
-                        <div id="savingResult" class="result" style="margin-top:8px">—</div>
-                    </section>
-                </div>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">GF</div>
+            <div>
+                <h1>Govind Finance Hub</h1>
+                <p class="small">Practical tools to manage your money</p>
             </div>
+        </div>
 
-            <section id="tips" class="card">
-                <h2>Finance Tips</h2>
-                <ul>
-                    <li>Automate savings — pay yourself first.</li>
-                    <li>Keep an emergency fund for 3–6 months.</li>
-                    <li>Track recurring subscriptions and cut the unused ones.</li>
-                    <li>Invest regularly for long-term goals.</li>
-                </ul>
-            </section>
+        <div class="top-actions">
+            <nav class="main" aria-label="Main navigation">
+                <a class="nav-link" href="#calculator">Calculator</a>
+                <a class="nav-link" href="#savings">Savings</a>
+                <a class="nav-link" href="#tips">Tips</a>
+                <a class="nav-link" href="#game">Game</a>
+                <a class="nav-link" href="#contact">Contact</a>
+            </nav>
 
-            <section id="game" class="card" style="display: flex; flex-direction: column; align-items: center;">
-                <h2 style="text-align: center;">Game</h2>
-                <div id="ttt-board" class="ttt-board">
-                   <div class="ttt-cell" data-index="0"></div><div class="ttt-cell" data-index="1"></div><div class="ttt-cell" data-index="2"></div>
-                   <div class="ttt-cell" data-index="3"></div><div class="ttt-cell" data-index="4"></div><div class="ttt-cell" data-index="5"></div>
-                   <div class="ttt-cell" data-index="6"></div><div class="ttt-cell" data-index="7"></div><div class="ttt-cell" data-index="8"></div>
+            <button
+                id="themeToggle"
+                class="theme-toggle"
+                aria-pressed="false"
+                title="Toggle theme"
+                type="button"
+            >☀️</button>
+        </div>
+    </header>
+
+    <!-- WELCOME -->
+    <section class="card">
+        <h2>Welcome</h2>
+        <p class="small">
+            Welcome to Govind Finance Hub — clear, friendly financial
+            tools and tips to help you save and grow.
+        </p>
+    </section>
+
+    <!-- CALCULATORS -->
+    <div class="grid">
+        <!-- BASIC CALCULATOR -->
+        <div class="col-left">
+            <section id="calculator" class="card" aria-labelledby="calcHeading">
+                <h2 id="calcHeading">Calculator</h2>
+                <label class="small" for="num1">First number</label>
+                <input type="number" id="num1" inputmode="decimal" aria-label="First number" placeholder="0">
+
+                <label class="small" for="num2">Second number</label>
+                <input type="number" id="num2" inputmode="decimal" aria-label="Second number" placeholder="0">
+
+                <div class="ops" role="group" aria-label="Operations">
+                    <button class="btn" type="button" data-op="add">➕ Add</button>
+                    <button class="btn" type="button" data-op="subtract">➖ Subtract</button>
+                    <button class="btn" type="button" data-op="multiply">✖️ Multiply</button>
+                    <button class="btn" type="button" data-op="divide">➗ Divide</button>
                 </div>
-                <div id="ttt-status" style="margin-top:15px; font-weight:bold; color:var(--accent);"></div>
-                <button id="reset-ttt" class="btn" style="margin-top:10px;">New Game</button>
-            </section>
-
-            <section id="contact" class="card">
-                <h2>Contact</h2>
-                <footer class="site-footer">
-                    <p>© 2026 AI Tools Directory</p>
-                    <p>Created by Govind Sharma</p>
-                    <a href="mailto:govindfinancehub@gmail.com">Email: govindfinancehub@gmail.com</a>
-                    <a href="https://instagram.com/govindfimacehub_456" target="_blank">Instagram: @govindfimacehub_456</a>
-                    <a href="https://x.com/govindfinaace_4" target="_blank">X (Twitter): @govindfinaace_4</a>
-                </footer>
+                <div id="answer" class="result" aria-live="polite">—</div>
             </section>
         </div>
 
-        <script>
-            // theme toggle
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', ()=>{
-                const current = document.documentElement.getAttribute('data-theme');
-                const next = current === 'light' ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', next);
-                localStorage.setItem('gh_theme', next);
-            });
+        <!-- SAVINGS CALCULATOR -->
+        <div class="col-right">
+            <section id="savings" class="card">
+                <h2>Savings Calculator</h2>
+                <label class="small" for="income">Monthly income</label>
+                <input type="number" id="income" placeholder="0" min="0">
 
-            // calculator
-            function getNums(){
-                const a = Number(document.getElementById('num1').value);
-                const b = Number(document.getElementById('num2').value);
-                return {a,b};
+                <label class="small" for="expenses">Monthly expenses</label>
+                <input type="number" id="expenses" placeholder="0" min="0">
+
+                <div style="margin-top:8px">
+                    <button class="btn" id="calcSavings" type="button">Calculate</button>
+                </div>
+                <div id="savingResult" class="result">—</div>
+            </section>
+        </div>
+    </div>
+
+    <!-- FINANCE TIPS -->
+    <section id="tips" class="card">
+        <h2>Finance Tips</h2>
+        <ul>
+            <li>Automate savings — pay yourself first.</li>
+            <li>Keep an emergency fund for 3–6 months.</li>
+            <li>Track recurring subscriptions and cut the unused ones.</li>
+            <li>Invest regularly for long-term goals.</li>
+        </ul>
+    </section>
+
+    <!-- TIC TAC TOE -->
+    <section id="game" class="card" style="display:flex; flex-direction:column; align-items:center;">
+        <h2 style="text-align:center;">Game</h2>
+        <div id="ttt-board" class="ttt-board">
+            <div class="ttt-cell" data-index="0"></div>
+            <div class="ttt-cell" data-index="1"></div>
+            <div class="ttt-cell" data-index="2"></div>
+            <div class="ttt-cell" data-index="3"></div>
+            <div class="ttt-cell" data-index="4"></div>
+            <div class="ttt-cell" data-index="5"></div>
+            <div class="ttt-cell" data-index="6"></div>
+            <div class="ttt-cell" data-index="7"></div>
+            <div class="ttt-cell" data-index="8"></div>
+        </div>
+        <div id="ttt-status" style="margin-top:15px; font-weight:bold; color:var(--accent);"></div>
+        <button id="reset-ttt" class="btn" type="button" style="margin-top:10px;">New Game</button>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card">
+        <h2>Contact</h2>
+        <footer class="site-footer">
+            <p>© 2026 Govind Finance Hub</p>
+            <p>Created by Govind Sharma</p>
+            <a href="mailto:govindfinancehub@gmail.com">Email: govindfinancehub@gmail.com</a>
+            <a href="https://instagram.com/govindfimacehub_456" target="_blank" rel="noopener noreferrer">Instagram: @govindfimacehub_456</a>
+            <a href="https://x.com/govindfinaace_4" target="_blank" rel="noopener noreferrer">X (Twitter): @govindfinaace_4</a>
+        </footer>
+    </section>
+</div>
+
+<script>
+/* =========================================
+   GOVIND FINANCE HUB - JAVASCRIPT
+========================================= */
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =====================================
+       THEME TOGGLE
+    ===================================== */
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("gh_theme");
+
+    if (savedTheme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeToggle.textContent = "🌙"; 
+        themeToggle.setAttribute("aria-pressed", "true");
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeToggle.textContent = "☀️"; 
+        themeToggle.setAttribute("aria-pressed", "false");
+    }
+
+    themeToggle.addEventListener("click", function () {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+
+        if (currentTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("gh_theme", "dark");
+            themeToggle.textContent = "☀️";
+            themeToggle.setAttribute("aria-pressed", "false");
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("gh_theme", "light");
+            themeToggle.textContent = "🌙";
+            themeToggle.setAttribute("aria-pressed", "true");
+        }
+    });
+
+    /* =====================================
+       BASIC CALCULATOR
+    ===================================== */
+    const calculatorButtons = document.querySelectorAll("[data-op]");
+    calculatorButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const num1 = document.getElementById("num1").value;
+            const num2 = document.getElementById("num2").value;
+
+            if (num1 === "" || num2 === "") {
+                document.getElementById("answer").textContent = "Please enter both numbers.";
+                return;
             }
-            document.querySelectorAll('[data-op]').forEach(btn=>{
-                btn.addEventListener('click', ()=>{
-                    const {a,b} = getNums();
-                    const op = btn.getAttribute('data-op');
-                    let res;
-                    switch(op){
-                        case 'add': res = a + b; break;
-                        case 'subtract': res = a - b; break;
-                        case 'multiply': res = a * b; break;
-                        case 'divide': res = (b === 0) ? 'Cannot divide by zero' : a / b; break;
-                    }
-                    document.getElementById('answer').textContent = res;
-                });
-            });
 
-            // savings
-            document.getElementById('calcSavings').addEventListener('click', ()=>{
-                const income = Number(document.getElementById('income').value) || 0;
-                const expenses = Number(document.getElementById('expenses').value) || 0;
-                document.getElementById('savingResult').textContent = 'Savings: ₹' + (income - expenses);
-            });
+            const a = Number(num1);
+            const b = Number(num2);
+            const operation = button.getAttribute("data-op");
+            let result;
 
-            // tic tac toe
-            let turn = 'X';
-            let board = Array(9).fill(null);
-            const statusEl = document.getElementById('ttt-status');
-            document.querySelectorAll('.ttt-cell').forEach(cell => {
-                cell.addEventListener('click', () => {
-                    const idx = cell.dataset.index;
-                    if(board[idx] || checkWinner()) return;
-                    board[idx] = turn;
-                    cell.innerText = turn;
-                    if(checkWinner()) { statusEl.innerText = turn + ' wins!'; }
-                    else if(board.every(cell => cell !== null)) { statusEl.innerText = 'Draw!'; }
-                    else { turn = turn === 'X' ? 'O' : 'X'; }
-                });
-            });
-
-            document.getElementById('reset-ttt').addEventListener('click', () => {
-                turn = 'X';
-                board = Array(9).fill(null);
-                statusEl.innerText = '';
-                document.querySelectorAll('.ttt-cell').forEach(cell => cell.innerText = '');
-            });
-
-            function checkWinner() {
-                const wins = [
-                    [0,1,2],[3,4,5],[6,7,8],
-                    [0,3,6],[1,4,7],[2,5,8],
-                    [0,4,8],[2,4,6]
-                ];
-                return wins.some(comb => {
-                    const [a,b,c] = comb;
-                    return board[a] && board[a] === board[b] && board[a] === board[c];
-                })_-
+            if (operation === "add") {
+                result = a + b;
+            } else if (operation === "subtract") {
+                result = a - b;
+            } else if (operation === "multiply") {
+                result = a * b;
+            } else if (operation === "divide") {
+                if (b === 0) {
+                    result = "Cannot divide by zero.";
+                } else {
+                    result = a / b;
+                }
+            } else {
+                result = "Invalid operation.";
             }
 
-        </script>
-    </body>
+            document.getElementById("answer").textContent = result;
+        });
+    });
+
+    /* =====================================
+       SAVINGS CALCULATOR
+    ===================================== */
+    const calcSavings = document.getElementById("calcSavings");
+    calcSavings.addEventListener("click", function () {
+        const income = Number(document.getElementById("income").value) || 0;
+        const expenses = Number(document.getElementById("expenses").value) || 0;
+        const savings = income - expenses;
+
+        document.getElementById("savingResult").textContent =
+            "Savings: ₹" + savings.toLocaleString("en-IN");
+    });
+
+    /* =====================================
+       TIC TAC TOE
+    ===================================== */
+    let turn = "X";
+    let board = Array(9).fill(null);
+    let gameActive = true; 
+
+    const statusEl = document.getElementById("ttt-status");
+    const cells = document.querySelectorAll(".ttt-cell");
+    const resetBtn = document.getElementById("reset-ttt");
+
+    const winningConditions = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+
+    cells.forEach(function (cell) {
+        cell.addEventListener("click", function () {
+            const index = Number(cell.getAttribute("data-index"));
+
+            /* Don't allow moves in occupied cells or if game is over */
+            if (board[index] !== null || !gameActive) {
+                return;
+            }
+
+            /* Record the move */
+            board[index] = turn;
+            cell.textContent = turn;
+
+            /* Check for win or draw */
+            let roundWon = false;
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    roundWon = true;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                statusEl.textContent = `Player ${turn} Wins!`;
+                gameActive = false;
+                return;
+            }
+
+            if (!board.includes(null)) {
+                statusEl.textContent = "It's a Draw!";
+                gameActive = false;
+                return;
+            }
+
+            /* Switch turn */
+            turn = turn === "X" ? "O" : "X";
+            statusEl.textContent = `Player ${turn}'s turn`;
+        });
+    });
+
+    /* Reset Game */
+    resetBtn.addEventListener("click", function () {
+        board = Array(9).fill(null);
+        turn = "X";
+        gameActive = true;
+        statusEl.textContent = "";
+        cells.forEach(cell => cell.textContent = "");
+    });
+});
+</script>
+</body>
 </html>
-
